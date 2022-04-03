@@ -1,3 +1,4 @@
+const variables = require('./variables');
 const CBDC = artifacts.require("CBDC");
 var CentralBankName = "MNB";
 var Name = "Digitized Hungarian Forint";
@@ -11,13 +12,12 @@ var CBDCInstance;
 module.exports = async function (deployer) {
   let accounts = await web3.eth.getAccounts();
 
-  var CentralBankAdmin = accounts[0]; // account 0
+  var DeployerAccount = accounts[0]; // account 0
   var CentralBankBurnAccount = accounts[1]; // account 1
   var CommercialBankAdmin = accounts[2]; // account 2
   var CommercialBankAccount = accounts[3]; // account 3
-  var CrossBorderBankAccount = accounts[8]; // account 8
+  var CrossBorderBankAccount = accounts[7]; // account 8
   
-
   console.log("CBDC deployment and setup started: Bank : ",CentralBankName);
   console.log("");
   // deploy
@@ -26,7 +26,9 @@ module.exports = async function (deployer) {
 
   // get instance
   CBDCInstance = await CBDC.deployed();
-  console.log("CBDC contract deployed");
+  console.log("CBDC contract deployed, address : ",CBDCInstance.address);
+  variables.addressHUF = CBDCInstance.address;
+  variables.CBDCInstanceHUF = CBDCInstance
 
   // setup central bank burn account
   console.log("STEP 2. [Role:,",CentralBankName, "] Central bank account set, account");

@@ -5,6 +5,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 
+// CBDC basic token implementation
 contract CBDC is ERC20, AccessControl {
 
     // roles
@@ -100,6 +101,11 @@ contract CBDC is ERC20, AccessControl {
         requiredCBDC[account] += amount;
         // raise event
         emit RequiredCBDC(account, amount);
+    }
+
+    // only central bank can delete the contract
+    function kill(address payable to) onlyRole(CENTRAL_BANK) public {
+        selfdestruct(to);
     }
 
 }
