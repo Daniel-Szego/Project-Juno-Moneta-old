@@ -1,5 +1,5 @@
 const variables = require('./variables');
-const CBDC = artifacts.require("CBDC");
+const CBDC = artifacts.require("WcCBDC/WcCBDC");
 var CentralBankName = "MNB";
 var Name = "Digitized Hungarian Forint";
 var Symbol = "eHUF";
@@ -9,6 +9,19 @@ var CrossBorderBankName = "Alibaba";
 
 var CBDCInstance;
 
+// accounts
+// 0 deployer MNB admin
+// 1 MNB burn
+// 2 OTP admin
+// 3 OTP account
+// 4 
+// 5 deployer PBOF admin
+// 6 PBOF burn account
+// 7 Alibaba admin
+// 8 Alibaba account
+// 9
+// 10 external account to read out anything
+
 module.exports = async function (deployer) {
   let accounts = await web3.eth.getAccounts();
 
@@ -16,7 +29,7 @@ module.exports = async function (deployer) {
   var CentralBankBurnAccount = accounts[1]; // account 1
   var CommercialBankAdmin = accounts[2]; // account 2
   var CommercialBankAccount = accounts[3]; // account 3
-  var CrossBorderBankAccount = accounts[7]; // account 8
+  var CrossBorderBankAccount = accounts[8]; // account 8
   
   console.log("CBDC deployment and setup started: Bank : ",CentralBankName);
   console.log("");
