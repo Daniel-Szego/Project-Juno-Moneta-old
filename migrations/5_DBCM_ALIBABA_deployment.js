@@ -38,8 +38,8 @@ module.exports = async function (deployer) {
   // get instance
   DCBMInstance = await DCBM.deployed();
   console.log("DCBM contract deployed, address : ",DCBMInstance.address);
-  variables.addressOTP = DCBMInstance.address;
-  variables.DCBMInstanceOTP = DCBMInstance
+  variables.addressAlibaba = DCBMInstance.address;
+  variables.DCBMInstanceAlibaba = DCBMInstance
 
   // whitelist commercial bank account
   console.log("STEP 2. [Role:,",CommercialBankName, "] whitelisting account to commercial bank : ",CommercialBankName);

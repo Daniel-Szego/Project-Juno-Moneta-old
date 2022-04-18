@@ -65,7 +65,7 @@ contract PvPManager is GovernanceWhitelist, IPvP {
       address cbdc2Address,
       address from2Address,
       address to2Address,
-      uint256 amount2) external {
+      uint256 amount2) public {
         // getting token wrappers
         IERC20 cbdc1 = IERC20(cbdc1Address);
         // check allowance cbdc1: at propositon amount1 has to be set

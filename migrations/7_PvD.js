@@ -1,0 +1,112 @@
+const variables = require('./variables');
+const PvD = artifacts.require("PvD/PvD");
+const DCBM = artifacts.require("DCBM/DCBM");
+
+var Name = "Digitized OTP Forint";
+var Symbol = "eOTP";
+var CommercialBankName = "OTP";
+var CommercialBankRole;
+var CrossBorderBankName = "Alibaba";
+
+var DCBMInstance;
+var PvDInstance;
+
+var key = "abrakadabra";
+var lock = "0x22f3abbceea4f8101bae65e491e6e1d68e26436916a5fae0d8ed22f2808a2162";
+
+// accounts
+// 0 deployer MNB admin
+// 1 MNB burn
+// 2 OTP admin
+// 3 OTP account
+// 4 
+// 5 deployer PBOF admin
+// 6 PBOF burn account
+// 7 Alibaba admin
+// 8 Alibaba account
+// 9
+// 10 external account to read out anything
+
+module.exports = async function (deployer) {
+  let accounts = await web3.eth.getAccounts();
+
+  var DeployerAddress = accounts[0]; // account 0 somebody deploys the contract
+
+  var CommercialBankAdminOTP = accounts[2]; // account 2
+  var CommercialBankAccountOTP = accounts[3]; // account 3
+
+  var CommercialBankAdminAlibaba = accounts[7]; // account 7
+  var CommercialBankAccountAlibaba = accounts[8]; // account 8
+
+  console.log("deploy PvD payment versus delivery scheme");
+  console.log("");
+
+  console.log("STEP 1. [Role: deployer ] deploy PvD payment versus delivery scheme");
+  await deployer.deploy(PvD, {from: accounts[2]});
+
+  // get instances
+  PvDInstance = await PvD.deployed();
+  DCBMInstance = variables.DCBMInstanceOTP;
+  console.log(DCBMInstance.address);
+
+  CommercialBankRole = await DCBMInstance.COMMERCIAL_BANK();
+  console.log("Rolename",CommercialBankRole);
+  console.log("STEP 2. [Role:, granting commercial Bank role to : OTP account");
+  await PvDInstance.grantRole(CommercialBankRole,CommercialBankAdminOTP, {from: accounts[2]});
+
+  console.log("STEP 3. [Role: OTP ] whitelist OTP accounts");
+  await PvDInstance.whitelistAccount(CommercialBankAccountOTP, {from: accounts[2]});
+
+  console.log("STEP 4. [Role: OTP ] whitelist smart contract account");
+  await DCBMInstance.whitelistAccount(PvDInstance.address, {from: accounts[2]});
+
+  // check Commercial Bank DCBM balance
+  console.log("STEP 5. [Role:, Anybody ] Check balance of : OTP");
+  var DCBMBalance2 = await DCBMInstance.balanceOf(CommercialBankAccountOTP, {from: accounts[10]})
+  console.log("Bank OTP has DCBM balance ", DCBMBalance2.toNumber());
+
+  // check Commercial Bank DCBM balance
+  console.log("STEP 6. [Role:, Anybody ] Check balance of : Alibaba");
+  var DCBMBalance3 = await DCBMInstance.balanceOf(CommercialBankAccountAlibaba, {from: accounts[10]})
+  console.log("Bank Alibaba has DCBM balance ", DCBMBalance3.toNumber());
+
+  console.log("STEP 7. [Role:, OTP ] allow balance to the payment versus delivery smart contract");
+  await DCBMInstance.approve(PvDInstance.address, 10, {from: accounts[3]});
+
+  console.log("STEP 8. [Role:, OTP ] setup HTLC");
+  await PvDInstance.setupHTLC(
+    1,
+    lock,
+    900000000,
+    DCBMInstance.address,
+    CommercialBankAccountOTP,
+    CommercialBankAccountAlibaba,
+    10
+  );
+
+  // check Commercial Bank DCBM balance
+  console.log("STEP 9. [Role:, Anybody ] Check balance of : OTP");
+  var DCBMBalance2 = await DCBMInstance.balanceOf(CommercialBankAccountOTP, {from: accounts[10]})
+  console.log("Bank OTP has DCBM balance ", DCBMBalance2.toNumber());
+
+  // check Commercial Bank DCBM balance
+  console.log("STEP 10. [Role:, Anybody ] Check balance of : Alibaba");
+  var DCBMBalance3 = await DCBMInstance.balanceOf(CommercialBankAccountAlibaba, {from: accounts[10]})
+  console.log("Bank Alibaba has DCBM balance ", DCBMBalance3.toNumber());
+
+  console.log("STEP 11. [Role:, OTP ] execute HTLC");
+  await PvDInstance.executeHTLC(1,key);
+
+  // check Commercial Bank DCBM balance
+  console.log("STEP 12. [Role:, Anybody ] Check balance of : OTP");
+  var DCBMBalance2 = await DCBMInstance.balanceOf(CommercialBankAccountOTP, {from: accounts[10]})
+  console.log("Bank OTP has DCBM balance ", DCBMBalance2.toNumber());
+
+  // check Commercial Bank DCBM balance
+  console.log("STEP 13. [Role:, Anybody ] Check balance of : Alibaba");
+  var DCBMBalance3 = await DCBMInstance.balanceOf(CommercialBankAccountAlibaba, {from: accounts[10]})
+  console.log("Bank Alibaba has DCBM balance ", DCBMBalance3.toNumber());
+
+
+
+};
