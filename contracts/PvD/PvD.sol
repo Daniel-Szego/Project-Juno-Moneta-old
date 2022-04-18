@@ -25,7 +25,7 @@ contract PvD is IPvD, GovernanceWhitelist {
       uint256 amount;
       }
 
-    mapping(uint256 => HTLC) htlcs;
+    mapping(uint256 => HTLC) public htlcs;
 
     // event : htlc setup
     event HTLCSetup(

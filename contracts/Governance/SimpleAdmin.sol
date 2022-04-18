@@ -7,7 +7,7 @@ import "./IAdmin.sol";
 contract SimpleAdmin is IAdmin {
 
     // admins
-    mapping (address => bool) admins;
+    mapping (address => bool) public admins;
 
     // event : add admin
     event AdminAdded(address admin);

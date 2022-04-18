@@ -21,7 +21,7 @@ contract PvPManager is GovernanceWhitelist, IPvP {
       uint256 amount2;
       }
 
-    mapping(uint256 => Swap) swaps;
+    mapping(uint256 => Swap) public swaps;
 
     // event : proposeswap
     event SwapProposed(
