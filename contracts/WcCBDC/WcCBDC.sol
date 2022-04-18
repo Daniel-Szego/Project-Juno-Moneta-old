@@ -1,30 +1,19 @@
 
-// contracts/CBDC.sol
+// contracts/WcCBDC/WcCBDC.sol
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/access/AccessControl.sol";
+import "./IWcCBDC.sol";
+import "../Governance/GovernanceWhitelist.sol";
 
-contract CBDC is ERC20, AccessControl {
-
-    // roles
-    bytes32 public constant CENTRAL_BANK = keccak256("CENTRAL_BANK");
-    bytes32 public constant COMMERCIAL_BANK = keccak256("COMMERCIAL_BANK");
-    bytes32 public constant GOVERNMENT = keccak256("GOVERNMENT");
-    bytes32 public constant SUPERVISOR = keccak256("SUPERVISOR");
+// wholesale crossboder CBDC basic token implementation
+contract WcCBDC is ERC20, GovernanceWhitelist, IwcCBDC {
 
     //central bank burner account: burning is possible only from central banks burner account
     address public burnAccount;
 
     //event burn account set
     event BurnAccountSet(address);
-
-    // whitelist account
-    mapping(address => bool) public whitelist;
-
-    //events whitelist, blacklist
-    event WhitelistAccount(address);
-    event BlacklistAccount(address);
 
     // reuired amount of CBDC
     mapping (address => uint256) public requiredCBDC;
@@ -43,7 +32,7 @@ contract CBDC is ERC20, AccessControl {
 
         // mint is from zero address, it must be whitelisted
         whitelist[address(0)] = true;
-
+        
     }
 
     // setting the burner account
@@ -71,22 +60,6 @@ contract CBDC is ERC20, AccessControl {
         _burn(burnAccount, amount);
     }
 
-    // whitelisting account for the transfer
-    function whitelistAccount(address account) public onlyRole(COMMERCIAL_BANK) {
-        // do whitelist
-        whitelist[account] = true;
-        // raise event
-        emit WhitelistAccount(account);
-    } 
-
-    // blacklisting account for the transfer
-    function blacklistAccount(address account) public onlyRole(COMMERCIAL_BANK) {
-        // do blacklist
-        whitelist[account] = false;
-        // raise blacklist event
-        emit BlacklistAccount(account);
-    } 
-
     // extend transfer with whitelisting and blacklisting functionality
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override
     {
@@ -100,6 +73,11 @@ contract CBDC is ERC20, AccessControl {
         requiredCBDC[account] += amount;
         // raise event
         emit RequiredCBDC(account, amount);
+    }
+
+    // only central bank can delete the contract
+    function kill(address payable to) onlyRole(CENTRAL_BANK) public {
+        selfdestruct(to);
     }
 
 }
