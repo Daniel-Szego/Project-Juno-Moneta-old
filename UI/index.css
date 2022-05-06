@@ -1,0 +1,53 @@
+body {
+    margin-left: 5%;
+    margin-right: 3%;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: white;
+}
+
+h1 {
+    text-align: center;    
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;    
+}
+		
+div {
+    text-align: center;    
+}
+		
+p { 
+    font-size: 12pt;
+}
+
+.dynamic-content {
+    display:none;
+}
+
+.column {
+    float: left;
+    width: 48%;
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid #282069;
+    background-color: #0;
+    text-align: left;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+  }
+}

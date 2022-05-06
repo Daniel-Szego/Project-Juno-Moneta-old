@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hyperledger Challange 2022 - Juno Moneta</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link href='https://fonts.googleapis.com/css?family=Open Sans:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+	<link href='./index.css' rel='stylesheet' type='text/css' media='all'>
+
+	<script src="web3.min.js"></script>
+	<script src="jquery.slim.min.js"></script>
+	<script src="./junomoneta.js"></script> 
+	
+</head>
+<body>
+	<h1>Juno Moneta</h1>
+	<h2>CBDC on Hyperledger Besu</h2>
+	
+	<br><br>
+	
+	<div class="row">
+		<div class="column">
+			<h3>Central Bank - MNB</h3>
+			<a href="#" onclick="setBurnMnb()" class="btn btn-primary">Set Burn Account</a>
+			<input type="text" id="burn_address_mnb" size="40" placeholder="Central Bank Burn Address">
+			<br><br>
+			<a href="#" onclick="grantRoleMnb()" class="btn btn-primary">Grant Role</a>
+			<input type="text" id="commbank_admin_address_mnb" size="40" placeholder="Commercial Bank Admin Address">
+			<br><br>
+			<a href="#" onclick="mintMnb()" class="btn btn-primary">Mint CBDC</a>
+			<input type="text" id="mint_amount_mnb" size="4" placeholder="Amount">
+			<input type="text" id="mint_commbank_address_mnb" size="40" placeholder="Commercial Bank Address">
+			<br><br>
+			<center><p id="centralbank_mnb_address">Address: </p></center>
+		</div>
+		<div class="column">
+			<h3>Central Bank - PBOF</h3>
+			<a href="#" onclick="setBurnPbof()" class="btn btn-primary">Set Burn Account</a>
+			<input type="text" id="burn_address_pbof" size="40" placeholder="Central Bank Burn Address">
+			<br><br>
+			<a href="#" onclick="grantRolePbof()" class="btn btn-primary">Grant Role</a>
+			<input type="text" id="commbank_admin_address_pbof" size="40" placeholder="Commercial Bank Admin Address">
+			<br><br>
+			<a href="#" onclick="mintPbof()" class="btn btn-primary">Mint CBDC</a>
+			<input type="text" id="mint_amount_pbof" size="4" placeholder="Amount">
+			<input type="text" id="mint_commbank_address_pbof" size="40" placeholder="Commercial Bank Address">
+			<br><br>
+			<center><p id="centralbank_pbof_address">Address: </p></center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column">
+			<h3>Central Bank Burn - MNB</h3>
+			<br><br>
+			<center><p id="centralbank_burn_mnb_address">Address: </p></center>
+		</div>
+		<div class="column">
+			<h3>Central Bank Burn - PBOF</h3>
+			<br><br>
+			<center><p id="centralbank_burn_pbof_address">Address: </p></center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column" id="commbank_admin_otp">
+			<h3>Commercial Bank Admin - OTP</h3>
+			
+			<a href="#" onclick="whitelistAccountOtp()" class="btn btn-primary">Whitelist Account for CBDC</a>
+			<input type="text" id="whitelist_commbank_address_otp" size="40" placeholder="Commercial Bank Address">
+			<br><br>
+			
+			<a href="#" onclick="requireCBDCHuf()" class="btn btn-primary">Require CBDC</a>
+			<input type="text" id="require_cbdc_huf_amount" size="4" placeholder="Amount">
+			<input type="text" id="require_commbank_address_otp" size="40" placeholder="Commercial Bank Address">
+			<br><br>
+			
+			<a href="#" onclick="whitelistAccountDcmbOtp()" class="btn btn-info">Whitelist Account for DCMB</a>
+			<input type="text" id="whitelist_commbank_address_dcmb_otp" size="40" placeholder="Commercial Bank Address">
+			<br><br>
+			
+			<a href="#" onclick="mintDcmbOtp()" class="btn btn-info">Mint DCMB</a>
+			<input type="text" id="mint_dcmb_otp_amount" size="4" placeholder="Amount">
+			<input type="text" id="mint_dcmb_otp_commbank_address" size="40" placeholder="Commercial Bank Address">
+			<br><br>
+			
+			<a href="#" onclick="pvpGrantRoleOtp()" class="btn btn-success">PvP: Grant Role</a>
+			<input type="text" id="pvp_otp_grant_commbank_address" size="40" placeholder="Commercial Bank Admin Address">
+			<br><br>
+			
+			<a href="#" onclick="pvpWhitelistaccountOtp()" class="btn btn-success">PvP: Whitelist Account</a>
+			<input type="text" id="pvp_otp_whitelist_commbank_address" size="40" placeholder="Commercial Bank Address">
+			<br><br>
+			
+			<center><p id="commbank_admin_otp_address">Address: </p></center>
+			
+		</div>
+		<div class="column" id="commbank_admin_alibaba">
+			<h3>Commercial Bank Admin - Alibaba</h3>
+			
+			<a href="#" onclick="whitelistAccountAlibaba()" class="btn btn-primary">Whitelist Account for CBDC</a>
+			<input type="text" id="whitelist_commbank_address_alibaba" size="40" placeholder="Commercial Bank Address">
+			<br><br>
+			
+			<a href="#" onclick="requireCBDCYuan()" class="btn btn-primary">Require CBDC</a>
+			<input type="text" id="require_cbdc_yuan_amount" placeholder="Amount">
+			<input type="text" id="require_ommbank_address_alibaba" size="40" placeholder="Commercial Bank Address">
+			<br><br>
+			
+			<a href="#" onclick="whitelistAccountDcmbAlibaba()" class="btn btn-info">Whitelist Account for DCMB</a>
+			<input type="text" id="whitelist_commbank_address_dcmb_alibaba" size="40" placeholder="Commercial Bank Address">
+			<br><br>
+			
+			<a href="#" onclick="mintDcmbAlibaba()" class="btn btn-info">Mint DCMB</a>
+			<input type="text" id="mint_dcmb_alibaba_amount" placeholder="Amount">
+			<input type="text" id="mint_dcmb_alibaba_commbank_address" size="40" placeholder="Commercial Bank Address">
+			<br><br>
+			
+			<a href="#" onclick="pvpGrantRoleAlibaba()" class="btn btn-success">PvP: Grant Role</a>
+			<input type="text" id="pvp_alibaba_grant_commbank_address" size="40" placeholder="Commercial Bank Admin Address">
+			<br><br>
+			
+			<a href="#" onclick="pvpWhitelistaccountAlibab()" class="btn btn-success">PvP: Whitelist Account</a>
+			<input type="text" id="pvp_alibaba_whitelist_commbank_address" size="40" placeholder="Commercial Bank Address">
+			<br><br>
+			
+			<center><p id="commbank_admin_alibaba_address">Address: </p></center>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="column" id="commbank_otp">
+			<h3>Commercial Bank - OTP</h3>
+			
+			<a href="#" onclick="transferCbdcHuf()" class="btn btn-primary">Transfer CBDC eHUF</a>
+			<input type="text" id="transfer_cbdc_huf_amount" size="14" placeholder="CBDC eHUF Amount">
+			<input type="text" id="transfer_cbdc_huf_target_address" size="40" placeholder="Recipient (Commercial Bank) Address">
+			<br><br>	
+			
+			<a href="#" onclick="transferDcmbHuf()" class="btn btn-info">Transfer DCMB eHUF</a>
+			<input type="text" id="transfer_dcmb_huf_amount" size=14" placeholder="DCMB eHUF Amount">
+			<input type="text" id="transfer_dcmb_huf_target_address" size="40" placeholder="Recipient (Commercial Bank) Address">
+			<br><br>
+			
+			<a href="#" onclick="approveSwapCbdcHuf()" class="btn btn-success">Approve SWAP CBDC eHUF -> eYUAN</a>
+			<input type="text" id="approve_swap_cbdc_huf" size="14" placeholder="CBDC eHUF Amount">
+			<br><br>
+			
+			<a href="#" onclick="proposeSwapCbdcHuf()" class="btn btn-success">Propose SWAP CBDC eHUF -> eYUAN</a>
+			<input type="text" id="swap_id_otp" placeholder="Swap ID" size="4" maxlength="3">
+			<input type="text" id="propose_swap_cbdc_huf_from_amount" size="8" placeholder="From Amount">			
+			<input type="text" id="propose_swap_cbdc_huf_to_amount" size="6" placeholder="To Amount">
+			<input type="text" id="propose_swap_cbdc_huf_to_address" size="27" placeholder="To Address">
+			<br><br>
+			
+			<a href="#" onclick="doSwapOtp()" class="btn btn-success">Do SWAP CBDC eHUF -> eYUAN</a>
+			<input type="text" id="do_swapid_otp" placeholder="Swap ID" size="4" maxlength="3">
+			<br><br>
+			
+			<p id="balance_otp_cbdc_huf">CBDC eHUF Balance = </p>
+			<p id="balance_otp_cbdc_yuan">CBDC eYUAN Balance = </p>
+			<p id="balance_otp_dcmb_huf">DCMB eHUF Balance = </p>
+			<p id="balance_otp_dcmb_yuan">DCMB eYUAN Balance = </p>
+			<br><br>
+			<center><p id="commbank_otp_address">Address: </p></center>
+			
+		</div>
+		<div class="column" id="commbank_alibaba">
+			<h3>Commercial Bank - Alibaba</h3>
+			
+			<a href="#" onclick="transferCbdcYuan()" class="btn btn-primary">Transfer CBDC eYUAN</a>
+			<input type="text" id="transfer_cbdc_yuan_amount" size="14" placeholder="CBDC eYUAN Amount">
+			<input type="text" id="transfer_cbdc_yuan_target_address" size="40" placeholder="Recipient (Commercial Bank) Address">
+			<br><br>
+			
+			<a href="#" onclick="transferDcmbYuan()" class="btn btn-info">Transfer DCMB eYUAN</a>
+			<input type="text" id="transfer_dcmb_yuan_amount" size="14" placeholder="DCMB eYUAN Amount">
+			<input type="text" id="transfer_dcmb_yuan_target_address" size="40" placeholder="Recipient (Commercial Bank) Address">
+			<br><br>
+			
+			<a href="#" onclick="approveSwapCbdcYuan()" class="btn btn-success">Approve SWAP CBDC eYUAN -> eHUF</a>
+			<input type="text" id="approve_swap_cbdc_yuan" size="14" placeholder="CBDC eYUAN Amount">
+			<br><br>
+			
+			<a href="#" onclick="proposeSwapCbdcYuan()" class="btn btn-success">Propose SWAP CBDC eYUAN -> eHUF</a>
+			<input type="text" id="swap_id_alibaba" placeholder="Swap ID" size="4" maxlength="3">
+			<input type="text" id="propose_swap_cbdc_yuan_from_amount" size="8" placeholder="From amount">
+			<input type="text" id="propose_swap_cbdc_yuan_to_amount" size="6" placeholder="To amount">
+			<input type="text" id="propose_swap_cbdc_yuan_to_address" size="27" placeholder="To address">
+			<br><br>
+			
+			<a href="#" onclick="doSwapAlibaba()" class="btn btn-success">Do SWAP CBDC eYUAN -> eHUF</a>
+			<input type="text" id="do_swapid_alibaba" placeholder="Swap ID" size="4" maxlength="3">
+			<br><br>			
+			
+			<p id="balance_alibaba_cbdc_yuan">CBDC eYUAN Balance = </p>
+			<p id="balance_alibaba_cbdc_huf">CBDC eHUF Balance = </p>
+			<p id="balance_alibaba_dcmb_yuan">DCMB eYUAN Balance = </p>
+			<p id="balance_alibaba_dcmb_huf">DCMB eHUF Balance = </p>
+			<br><br>
+			<center><p id="commbank_alibaba_address">Address: </p></center>
+		</div>
+	</div>
+	
+</body>
+</html>
