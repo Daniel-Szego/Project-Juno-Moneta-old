@@ -12,6 +12,23 @@ Modules for different use-cases:
 - wcCBDC : module for wholesale crossborder CBDC use-cases
 - GreenFinance : Green finance use cases
 
+To run it with hyperlegder Besu:
+- install Hyperlegder Besu, like with the quickstart: https://besu.hyperledger.org/en/1.3.6/Tutorials/Quickstarts/Private-Network-Quickstart/
+- git clone https://github.com/ConsenSys/quorum-dev-quickstart
+- cd quorum-dev-quickstart
+- (First install) npx quorum-dev-quickstart (n,n,n,n,n)
+- cd quorum-test-network
+- make sure that you config/genesis.json is configured and if there is access for that from the containers
+- ./run.sh
+
+- to stop everything: 
+- ./stop.sh
+- ./remove.sh
+
+To configure metamask:
+RPC url: http://localhost:8545
+ChainID: 1337
+
 Compile and run:
 - npm install
 - truffle develop
