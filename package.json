@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/Daniel-Szego/Project-Juno-Moneta#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.5.0"
+    "@openzeppelin/contracts": "^4.5.0",
+    "@truffle/hdwallet-provider": "^2.0.8",
+    "truffle-hdwallet-provider": "^1.0.17"
   }
 }
