@@ -31,9 +31,22 @@ ChainID: 1337
 
 Compile and run:
 - npm install
-- truffle develop
-- compile
-- migrate
+- truffle compile
+- truffle migrate --network besuMNB //deploy MNB contract
+- truffle migrate --network besuPBOC //deploy PBOC cotnract
+
+start web server, like:
+
+/etc/init.d/lighttpd start
+
+/etc/init.d/lighttpd stop
+
 
 (node 10 works, I got some problems with node 12)
+
+
+tipps and tricks: 
+- deployment can time out because of poor network as well
+- metamask is not alway connected, try refresh page or go to another network and switch back
+- between two deployment, metamask walet should be resetted, because if not nonce will be invalid, resulting in the transactions are not going through
 

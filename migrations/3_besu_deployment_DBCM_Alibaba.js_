@@ -1,0 +1,35 @@
+const variables = require('./variables');
+
+const DCBM = artifacts.require("DCBM/DCBM");
+var Name = "Digitized Alibaba Yüan";
+var Symbol = "eALI";
+var CommercialBankName = "Alibaba";
+var CommercialBankRole;
+var CrossBorderBankName = "OTP";
+
+var DCBMInstance;
+
+// accounts
+// 0 deployer MNB admin
+// 1 MNB burn
+// 2 OTP admin
+// 3 OTP account
+// 4 
+// 5 deployer PBOF admin
+// 6 PBOF burn account
+// 7 Alibaba admin
+// 8 Alibaba account
+// 9
+// 10 external account to read out anything
+
+module.exports = async function (deployer) {
+
+  console.log("DCBM deployment and setup started: Bank : ",CommercialBankName);
+  console.log("");
+
+  // deploy
+  console.log("STEP 1. [Role:,",CommercialBankName, "] DCBM contract deployment, name: ",Name," Symbol: ",Symbol );
+  await deployer.deploy(DCBM,Name,Symbol);
+
+  
+};
