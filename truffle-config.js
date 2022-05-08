@@ -18,6 +18,18 @@
  *
  */
 
+ const PrivateKeyProvider = require("@truffle/hdwallet-provider");
+ const privateKeyMNB ="0x8f2a55949038a9610f50fb23b5883af3b4ecb3c3bb792cbcefbd1542c692be63";
+ const privateKeyProviderMNB = new PrivateKeyProvider(privateKeyMNB, "http://localhost:8545");
+
+ const privateKeyPBOC ="0xc87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3";
+ const privateKeyProviderPBOC = new PrivateKeyProvider(privateKeyPBOC, "http://localhost:8545");
+
+
+//const PrivateKeyProvider = require('@truffle/hdwallet-provider');
+// const PrivateKeyProvider = require("truffle-hdwallet-provider");
+// const privateKey = "0x8f2a55949038a9610f50fb23b5883af3b4ecb3c3bb792cbcefbd1542c692be63";
+ 
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
 //
 // const fs = require('fs');
@@ -40,7 +52,33 @@ module.exports = {
     // You should run a client (like ganache-cli, geth or parity) in a separate terminal
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
-    //
+    
+    besuMNB: {
+      provider: privateKeyProviderMNB,
+      network_id: "*",
+      networkCheckTimeout: 100000000,
+      timeoutBlocks: 200000
+    },
+
+    besuPBOC: {
+      provider: privateKeyProviderPBOC,
+      network_id: "*",
+      networkCheckTimeout: 100000000,
+      timeoutBlocks: 200000
+    },
+
+    besu: {
+      host: "127.0.0.1",
+      port: 8545,
+      from: "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+      network_id: "*" // Match any network id
+    },
+    quickstartWallet: {
+      provider: () => new PrivateKeyProvider(privateKey, "http://localhost:8545"),
+      network_id: "*"
+    },
+
+
     // development: {
     //  host: "127.0.0.1",     // Localhost (default: none)
     //  port: 8545,            // Standard Ethereum port (default: none)
