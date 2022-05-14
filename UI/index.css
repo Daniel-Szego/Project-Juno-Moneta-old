@@ -30,6 +30,36 @@ p {
     display:none;
 }
 
+.contentright {
+    position: relative;
+}
+
+.contentright img {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+}
+
+.contentleft {
+    position: relative;
+}
+
+.contentleft img {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+}
+
+.content {
+    position: relative;
+}
+
+.content img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
 .column {
     float: left;
     width: 48%;
@@ -38,6 +68,24 @@ p {
     border: 2px solid #282069;
     background-color: #0;
     text-align: left;
+}
+
+.column1 {
+    float: left;
+    width: 80%;
+    padding: 10px;
+    margin: 2px;
+    background-color: #0;
+    text-align: center;
+}
+
+.column2 {
+    float: right;
+    width: 20%;
+    padding: 10px;
+    margin: 2px;
+    background-color: #0;
+    text-align: center;
 }
 
 .row:after {

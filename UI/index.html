@@ -14,6 +14,14 @@
 	
 </head>
 <body>
+	<div class="contentright">
+		<img src="logo/besu.png" width=242 height=80/>
+	</div>
+	
+	<div class="contentleft">
+		<img src="logo/hyperledger.png" width=400 height=80/>
+	</div>
+
 	<h1>Juno Moneta</h1>
 	<h2>CBDC on Hyperledger Besu</h2>
 	
@@ -21,6 +29,9 @@
 	
 	<div class="row">
 		<div class="column">
+			<div class="content">
+				<img src="logo/mnb.png" width=130 height=130/>
+			</div>
 			<h3>Central Bank - MNB</h3>
 			<a href="#" onclick="setBurnMnb()" class="btn btn-primary">Set Burn Account</a>
 			<input type="text" id="burn_address_mnb" size="40" placeholder="Central Bank Burn Address">
@@ -35,6 +46,9 @@
 			<center><p id="centralbank_mnb_address">Address: </p></center>
 		</div>
 		<div class="column">
+			<div class="content">
+				<img src="logo/pbof.png" width=130 height=130/>
+			</div>
 			<h3>Central Bank - PBOF</h3>
 			<a href="#" onclick="setBurnPbof()" class="btn btn-primary">Set Burn Account</a>
 			<input type="text" id="burn_address_pbof" size="40" placeholder="Central Bank Burn Address">
@@ -50,13 +64,20 @@
 		</div>
 	</div>
 	
+	
 	<div class="row">
 		<div class="column">
+			<div class="content">
+				<img src="logo/mnb.png" width=130 height=130/>
+			</div>
 			<h3>Central Bank Burn - MNB</h3>
 			<br><br>
 			<center><p id="centralbank_burn_mnb_address">Address: </p></center>
 		</div>
 		<div class="column">
+			<div class="content">
+				<img src="logo/pbof.png" width=130 height=130/>
+			</div>
 			<h3>Central Bank Burn - PBOF</h3>
 			<br><br>
 			<center><p id="centralbank_burn_pbof_address">Address: </p></center>
@@ -65,6 +86,10 @@
 	
 	<div class="row">
 		<div class="column" id="commbank_admin_otp">
+			<div class="content">
+				<img src="logo/otp.png" width=130 height=130/>
+			</div>
+			
 			<h3>Commercial Bank Admin - OTP</h3>
 			
 			<a href="#" onclick="whitelistAccountOtp()" class="btn btn-primary">Whitelist Account for CBDC</a>
@@ -97,6 +122,10 @@
 			
 		</div>
 		<div class="column" id="commbank_admin_alibaba">
+			<div class="content">
+				<img src="logo/alibaba.png" width=124 height=63/>
+			</div>
+			
 			<h3>Commercial Bank Admin - Alibaba</h3>
 			
 			<a href="#" onclick="whitelistAccountAlibaba()" class="btn btn-primary">Whitelist Account for CBDC</a>
@@ -131,6 +160,10 @@
 	
 	<div class="row">
 		<div class="column" id="commbank_otp">
+			<div class="content">
+				<img src="logo/otp.png" width=130 height=130/>
+			</div>
+			
 			<h3>Commercial Bank - OTP</h3>
 			
 			<a href="#" onclick="transferCbdcHuf()" class="btn btn-primary">Transfer CBDC eHUF</a>
@@ -167,6 +200,10 @@
 			
 		</div>
 		<div class="column" id="commbank_alibaba">
+			<div class="content">
+				<img src="logo/alibaba.png" width=130 height=63/>
+			</div>
+			
 			<h3>Commercial Bank - Alibaba</h3>
 			
 			<a href="#" onclick="transferCbdcYuan()" class="btn btn-primary">Transfer CBDC eYUAN</a>
