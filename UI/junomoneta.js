@@ -1880,9 +1880,22 @@ $(document).ready(function() {
             account = e[0];
             console.log("account = " + account);
         
-            if(account == "0xb5DCc851A61F6a428C9369A9D611343e597099a9") {
+            if (account == "0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73") {
+                document.getElementById("centralbank_mnb").style.border="4px solid #00ff73";
+            } 
+            if (account == "0x627306090abaB3A6e1400e9345bC60c78a8BEf57") {
+                document.getElementById("centralbank_pbof").style.border="4px solid #00ff73";
+            } 
+            if (account == "0x8EdD3fD0088c6931d7be7fc9B0EEfdc29Ca4e8Af") {
+                document.getElementById("commbank_admin_otp").style.border="4px solid #00ff73";
+            }
+            if (account == "0xb0eeCD566F1788D6875fc08589b08e80F3A2F901") {
+                document.getElementById("commbank_admin_alibaba").style.border="4px solid #00ff73";
+            }
+            if (account == "0x8EdD3fD0088c6931d7be7fc9B0EEfdc29Ca4e8Af") {
                 document.getElementById("commbank_otp").style.border="4px solid #00ff73";
-            } else {
+            }
+            if (account == "0xb0eeCD566F1788D6875fc08589b08e80F3A2F901") {
                 document.getElementById("commbank_alibaba").style.border="4px solid #00ff73";
             }
         });
