@@ -30,23 +30,31 @@ p {
     display:none;
 }
 
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 .contentright {
     position: relative;
 }
 
 .contentright img {
     position: absolute;
-    top: 20px;
+    top: 30px;
     right: 50px;
 }
 
 .contentleft {
-    position: relative;
+    position: relative;   
 }
 
 .contentleft img {
     position: absolute;
-    top: 20px;
+    top: 30px;
     left: 0px;
 }
 
