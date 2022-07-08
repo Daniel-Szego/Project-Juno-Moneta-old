@@ -1879,6 +1879,7 @@ $(document).ready(function() {
         web3.eth.getAccounts().then(e => {
             account = e[0];
             console.log("account = " + account);
+             
             
         
             if (account == "0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73") {
