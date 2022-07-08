@@ -37,6 +37,8 @@ Compile and run:
 
 start web server, like:
 
+edit: /etc/lighttpd/lighttpd.conf
+
 /etc/init.d/lighttpd start
 
 /etc/init.d/lighttpd stop

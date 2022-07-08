@@ -1526,11 +1526,11 @@ var centralBankPBOFddress = "0x627306090abaB3A6e1400e9345bC60c78a8BEf57";
 var centralBankBurnMnbAddress = "0x39Ce188CCA4EBF6DF7E89ab0602f199a369A0BD8";
 var centralBankBurnPBOFddress = "0x39Ce188CCA4EBF6DF7E89ab0602f199a369A0BD8";
 
-var commbankAdminOtpAddress = "0x8EdD3fD0088c6931d7be7fc9B0EEfdc29Ca4e8Af";
-var commbankAdminAlibabaAddress = "0xb0eeCD566F1788D6875fc08589b08e80F3A2F901";
+var commbankAdminOtpAddress = "0xdEF4c8Be5af2EE130f7555aa94590b7832730878";
+var commbankAdminAlibabaAddress = "0xDC974303246491F4F0Cc6a5EaD4485860585Df3E";
 
-var commbankOtpAddress = "0x8EdD3fD0088c6931d7be7fc9B0EEfdc29Ca4e8Af";
-var commbankAlibabaAddress = "0xb0eeCD566F1788D6875fc08589b08e80F3A2F901";
+var commbankOtpAddress = "0xdEF4c8Be5af2EE130f7555aa94590b7832730878";
+var commbankAlibabaAddress = "0xDC974303246491F4F0Cc6a5EaD4485860585Df3E";
 
 
 
@@ -1879,12 +1879,7 @@ $(document).ready(function() {
         web3.eth.getAccounts().then(e => {
             account = e[0];
             console.log("account = " + account);
-        
-            if(account == "0xb5DCc851A61F6a428C9369A9D611343e597099a9") {
-                document.getElementById("commbank_otp").style.border="4px solid #00ff73";
-            } else {
-                document.getElementById("commbank_alibaba").style.border="4px solid #00ff73";
-            }
+            
         });
     });
     
@@ -1900,4 +1895,3 @@ $(document).ready(function() {
  
     console.log( "ready!" );
 });
-
