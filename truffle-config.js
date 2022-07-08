@@ -17,7 +17,7 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
-
+ 
  const PrivateKeyProvider = require("@truffle/hdwallet-provider");
  const privateKeyMNB ="0x8f2a55949038a9610f50fb23b5883af3b4ecb3c3bb792cbcefbd1542c692be63";
  const privateKeyProviderMNB = new PrivateKeyProvider(privateKeyMNB, "http://localhost:8545");

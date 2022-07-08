@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./IGreenToken.sol";
 import "../Governance/GovernanceWhitelist.sol";
-
+ 
 // green finance token basic interface
 //contract GreenToken is ERC20, GovernanceWhitelist, IGreenToken {
 

@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "./IGovernanceWhitelist.sol";
 import "./Roles.sol";
-
+ 
 // Governance contract for whitelisting
 contract GovernanceWhitelist is IGovernanceWhitelist, AccessControl, Roles {
 

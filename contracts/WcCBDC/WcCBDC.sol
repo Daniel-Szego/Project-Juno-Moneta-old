@@ -59,7 +59,7 @@ contract WcCBDC is ERC20, GovernanceWhitelist, IwcCBDC {
     function burn(uint256 amount) public onlyRole(CENTRAL_BANK) {
         _burn(burnAccount, amount);
     }
-
+ 
     // extend transfer with whitelisting and blacklisting functionality
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override
     {

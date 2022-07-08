@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "./IAdmin.sol";
-
+ 
 // governance for simple admin functionalities
 contract SimpleAdmin is IAdmin {
 

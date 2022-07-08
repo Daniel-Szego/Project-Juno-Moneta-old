@@ -5,7 +5,7 @@ var Symbol = "eOTP";
 var CommercialBankName = "OTP";
 var CommercialBankRole;
 var CrossBorderBankName = "Alibaba";
-
+ 
 var DCBMInstance;
 
 // accounts

@@ -6,7 +6,7 @@ var CommercialBankRole;
 var PvPManagerInstance;
 var CBDCHUFInstance;
 var CBDCYUANInstance;
-
+ 
 // accounts
 // 0 deployer MNB admin
 // 1 MNB burn

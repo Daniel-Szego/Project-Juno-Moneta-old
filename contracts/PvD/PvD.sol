@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "./IPvD.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "../Governance/GovernanceWhitelist.sol";
-
+ 
 
 // payment versus devlivery experimental implementation
 contract PvD is IPvD, GovernanceWhitelist {

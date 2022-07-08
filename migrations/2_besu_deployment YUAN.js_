@@ -8,7 +8,7 @@ var CommercialBankRole;
 var CrossBorderBankName = "OTP";
 
 var CBDCInstance;
-
+ 
 // accounts
 // 0 deployer MNB admin
 // 1 MNB burn

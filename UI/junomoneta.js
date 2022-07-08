@@ -1872,7 +1872,7 @@ function queryBalance() {
 }
 var balanceQueryInterval = setInterval(queryBalance, 3000);
 
-
+ 
 $(document).ready(function() {
  
     window.ethereum.request({ method: "eth_requestAccounts" }).then(() => {

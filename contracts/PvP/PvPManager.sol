@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "../Governance/GovernanceWhitelist.sol";
 import "./IPvP.sol";
-
+ 
 // payment versus payment manager experimental implementation
 // OTC style
 contract PvPManager is GovernanceWhitelist, IPvP {

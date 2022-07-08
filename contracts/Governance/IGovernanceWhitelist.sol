@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "./IGovernanceBase.sol";
-
+ 
 // interface for Digitized commercial bank money
 interface IGovernanceWhitelist is IGovernanceBase {
 

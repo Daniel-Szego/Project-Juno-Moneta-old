@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/IAccessControl.sol";
 import "../Governance/IGovernanceWhitelist.sol";
-
+ 
 // interface for wholesale crossborder DBDC
 interface IwcCBDC is IERC20, IAccessControl, IGovernanceWhitelist  {
 

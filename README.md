@@ -42,7 +42,7 @@ edit: /etc/lighttpd/lighttpd.conf
 /etc/init.d/lighttpd start
 
 /etc/init.d/lighttpd stop
-
+ 
 
 (node 10 works, I got some problems with node 12)
 

@@ -6,7 +6,7 @@ var Symbol = "eHUF";
 var CommercialBankName = "OTP";
 var CommercialBankRole;
 var CrossBorderBankName = "Alibaba";
-
+ 
 var CBDCInstance;
 
 // accounts

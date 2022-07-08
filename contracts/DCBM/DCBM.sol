@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./IDCBM.sol";
 import "../Governance/GovernanceWhitelist.sol";
-
+ 
 // Digitized commercial bank money experimental implementation
 contract DCBM is ERC20, GovernanceWhitelist, IDCBM {
 

@@ -7,4 +7,4 @@ module.exports = {
     addressAlibaba: 'x',
     DCBMInstanceOTP: 'x',
     DCBMInstanceAlibaba: 'x'
-};
+}; 

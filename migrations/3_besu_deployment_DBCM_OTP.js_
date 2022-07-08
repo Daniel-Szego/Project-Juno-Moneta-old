@@ -6,7 +6,7 @@ var Symbol = "eYUAN";
 var CommercialBankName = "Alibaba";
 var CommercialBankRole;
 var CrossBorderBankName = "OTP";
-
+ 
 var CBDCInstance;
 
 // accounts
